@@ -15,18 +15,44 @@
     <link href="{{ asset('css/icon.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        @include('layouts.navbars.materializeNavbar')
-        @yield('content')
-    </div>
+    @include('layouts.navbars.materializeNavbar')
+
+    <div class="progress">
+        <div id="determinate" class="determinate" style="width: 0%"></div>
+    </div>  
+
+    @yield('content')
 
     <!-- Scripts -->
     <script src="{{ asset('js/materialize.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.sidenav');
             var instances = M.Sidenav.init(elems);
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems);
+            var delay = ( function() {
+                var timer = 0;
+                return function(callback, ms) {
+                    clearTimeout (timer);
+                    timer = setTimeout(callback, ms);
+                };
+            })();
+            $(document).ajaxStart(function() {
+                let determinate = document.getElementById('determinate');
+                determinate.style.width = '50%'
+            })
+            .ajaxStop(function() {
+                let determinate = document.getElementById('determinate');
+                determinate.style.width = '100%'
+                delay(function(){
+                    // determinate.hidden = true;
+                    determinate.style.width = '0%'
+                }, 500)
+            })
         });
     </script>
+    @yield('javascript')
 </body>
 </html>
