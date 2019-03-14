@@ -1,19 +1,19 @@
 @extends('layouts.concept.default')
 
 @section('title')
-    Periodicidades
+    Proveedores
 @endsection
 
 @section('view-body')
     <br>
     <br>
-    @include('admin.catalogos.periodicidades._form')
-    @include('admin.catalogos.periodicidades._list')
+    @include('admin.catalogos.proveedores._form')
+    @include('admin.catalogos.proveedores._list')
     <!-- Modal Structure -->
     <div id="modal1" class="modal">
         <div class="modal-content">
             <h5>¡Peligro!</h5>
-            <p>¿Realmente desea eliminar la periodicidad?</p>
+            <p>¿Realmente desea eliminar el proveedor?</p>
             <p>Todes les dominies asociades desapareceren.</p>
         </div>
         <div class="modal-footer">

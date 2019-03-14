@@ -10,6 +10,9 @@
                     <a href="{{ route('admin.catalogo.proveedor.index') }}">Proveedores</a>
                 </li>
                 <li>
+                    <a href="{{ route('admin.catalogo.periodicidad.index') }}">Periodicidades</a>
+                </li>
+                <li>
                     <a href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
@@ -30,6 +33,9 @@
     @else
         <li>
             <a href="{{ route('admin.catalogo.proveedor.index') }}"><i class="material-icons">assignment_ind</i>Proveedores</a>
+        </li>
+        <li>
+            <a href="{{ route('admin.catalogo.periodicidad.index') }}"><i class="material-icons">assignment_ind</i>Periodicidades</a>
         </li>
         <li>
             <a href="{{ route('logout') }}"

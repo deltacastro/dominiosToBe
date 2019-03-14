@@ -46,7 +46,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
                 'show' => 'admin.catalogo.periodicidad.show'
             ],
             'parameters' => [
-                'periodicidades' => 'catalogoPeriodicidad'
+                'periodicidades' => 'periodicidad'
             ]
         ]);
     });
