@@ -49,5 +49,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
                 'periodicidades' => 'periodicidad'
             ]
         ]);
+        Route::resource('dominios', 'Admin\Catalogos\DominiosController', [
+            'names' => [
+                'index' => 'admin.catalogo.dominio.index',
+                'store' => 'admin.catalogo.dominio.store',
+                'create' => 'admin.catalogo.dominio.create',
+                'update' => 'admin.catalogo.dominio.update',
+                'edit' => 'admin.catalogo.dominio.edit',
+                'destroy' => 'admin.catalogo.dominio.destroy',
+                'show' => 'admin.catalogo.dominio.show'
+            ],
+            'parameters' => [
+                'dominios' => 'dominio'
+            ]
+        ]);
     });
 });

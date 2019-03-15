@@ -30,8 +30,10 @@
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.sidenav');
             var instances = M.Sidenav.init(elems);
-            var elems = document.querySelectorAll('.modal');
-            var instances = M.Modal.init(elems);
+
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems);
+
             var delay = ( function() {
                 var timer = 0;
                 return function(callback, ms) {
@@ -39,6 +41,7 @@
                     timer = setTimeout(callback, ms);
                 };
             })();
+            
             $(document).ajaxStart(function() {
                 let determinate = document.getElementById('determinate');
                 determinate.style.width = '50%'
@@ -50,7 +53,23 @@
                     // determinate.hidden = true;
                     determinate.style.width = '0%'
                 }, 500)
-            })
+            });
+
+            $('.datepicker').on('click', function() {
+                let datepicker = document.querySelector('.datepicker');
+                let datepickerInstances = M.Datepicker.init(datepicker, {
+                    firstDay: true, 
+                    format: 'yyyy-mm-dd',
+                    i18n: {
+                        months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                        monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
+                        weekdays: ["Domingo","Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+                        weekdaysShort: ["Dom","Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+                        weekdaysAbbrev: ["D","L", "M", "M", "J", "V", "S"]
+                    }
+                });
+                datepickerInstances.open();
+            });
         });
     </script>
     @yield('javascript')

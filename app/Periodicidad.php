@@ -58,4 +58,5 @@ class Periodicidad extends Model
     public function getAllList() {
         return $this->all()->pluck('nombre', 'id');
     }
+
 }
