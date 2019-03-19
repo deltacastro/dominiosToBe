@@ -26,13 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $email = [
-            'abelcastro@tobe.mx',
-            'daviddominguez@tobe.mx'
-        ];
-        $user = auth()->user();
-        $when = Carbon\Carbon::now()->addSeconds(1);
-        dispatch((new SendReminderEmail($user, $email))->delay($when));
+        // $email = [
+        //     'abelcastro@tobe.mx',
+        //     'daviddominguez@tobe.mx'
+        // ];
+        // $user = auth()->user();
+        // $when = Carbon\Carbon::now()->addSeconds(1);
+        // dispatch((new SendReminderEmail($user, $email))->delay($when));
         return view('home');
     }
 }

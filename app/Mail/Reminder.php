@@ -19,7 +19,6 @@ class Reminder extends Mailable
      */
     public function build()
     {
-        // dd($this->markdown('emails.reminder'));
         return $this->markdown('emails.reminder');
     }
 }
