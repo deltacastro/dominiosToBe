@@ -18,6 +18,6 @@ class EmailController extends Controller
             'abelcastro@tobe.mx',
             'daviddominguez@tobe.mx'
         ];
-        // Mail::to($email)->send(new Reminder());
+        Mail::to($email)->send(new Reminder());
     }
 }
