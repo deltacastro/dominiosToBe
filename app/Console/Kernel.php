@@ -23,12 +23,11 @@ class Kernel extends ConsoleKernel
      * @return void
      */
     protected function schedule(Schedule $schedule)
-    {
-        
+    {    
         $schedule->call(function(){
             $emailController = new EmailController;
             $emailController->build();
-        })->everyMinute();
+        })->everyTenMinutes();
     }
 
     /**
