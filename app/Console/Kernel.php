@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
         $schedule->call(function(){
             $emailController = new EmailController;
             $emailController->build();
-        })->everyTenMinutes();
+        })->everyMinute();
     }
 
     /**

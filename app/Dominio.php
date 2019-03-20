@@ -22,6 +22,11 @@ class Dominio extends Model
         return $this->hasOne(Periodicidad::class, 'id', 'periodicidad_id');
     }
 
+    public function proveedor()
+    {
+        return $this->hasOne(Proveedor::class, 'id', 'proveedor_id');
+    }
+
     //ACCESORS
 
     //INTERNAL FUNCTIONS
@@ -93,5 +98,30 @@ class Dominio extends Model
 
     public function getAllList() {
         return $this->all()->pluck('nombre', 'id');
+    }
+
+    public function getExpiraciones()
+    {
+        $mesExpiracion = $this->getMesExpira();
+        $semanaExpiracion = $this->getSemanaExpira();
+    }
+
+    public function getSemanaExpira ()
+    {
+        $rango['inicio'] = date('Y-m-d');
+        $date = strtotime($rango['inicio']);
+        $fechaExpiracion = strtotime('+1 week', $date);
+        $rango['fin'] = date('Y-m-d', $fechaExpiracion);
+        $data = $this->with('proveedor')->whereBetween('fechaExpiracion', $rango)->get();
+        return $data;
+    }
+
+    public function getMesExpira() {
+        $date = date('Y-m-d');
+        $date = strtotime($date);
+        $fechaExpiracion = strtotime('+1 month', $date);
+        $fechaExpiracion = date('Y-m-d', $fechaExpiracion);
+        $data = $this->with('proveedor')->where('fechaExpiracion', $fechaExpiracion)->get();
+        return $data;
     }
 }

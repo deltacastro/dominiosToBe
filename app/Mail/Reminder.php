@@ -12,6 +12,13 @@ class Reminder extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $expiraciones;
+
+    public function __construct($expiraciones)
+    {
+        $this->expiraciones = $expiraciones;
+    }
+
     /**
      * Build the message.
      *
@@ -19,6 +26,9 @@ class Reminder extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.reminder');
+        // dd($this->expiraciones['dominio']['mes']);
+        // dd($this->expiraciones['dominio']);
+        // dd($this->expiraciones['dominio']['semana'][0]->nombre);
+        return $this->markdown('emails.reminder')->subject('DOMINIOS POR CADUCAR!');
     }
 }
