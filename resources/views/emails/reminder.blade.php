@@ -20,4 +20,25 @@
 @endforeach
 @endcomponent
 @endif
+@if (isset($expiraciones['hosting']['mes']) && count($expiraciones['hosting']['mes']) > 0 )
+# Hostings que estan por expirar este mes.
+@component('mail::table')
+| Hosting       | Proveedor     | Fecha expiración  |
+|:------------- |:-------------|-----------------------:|
+@foreach ($expiraciones['hosting']['mes'] as $hostingMes)
+| {{ $hostingMes->nombre }} | {{ $hostingMes->proveedor->nombre }}  | {{ $hostingMes->fechaExpiracion }}    |
+@endforeach
+@endcomponent
+@endif
+
+@if (isset($expiraciones['hosting']['semana']) && count($expiraciones['hosting']['semana']) > 0 )
+# Hostings que estan por expirar esta semana.
+@component('mail::table')
+| Hosting       | Proveedor     | Fecha expiración  |
+|:------------- |:-------------|-----------------------:|
+@foreach ($expiraciones['hosting']['semana'] as $hostingSemana)
+| {{ $hostingSemana->nombre }} | {{ $hostingSemana->proveedor->nombre }}  | {{ $hostingSemana->fechaExpiracion }}    |
+@endforeach
+@endcomponent
+@endif
 @endcomponent
