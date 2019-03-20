@@ -15,7 +15,7 @@ class HostingsController extends Controller
     {
         $this->periodicidadModel = new Periodicidad;
         $this->proveedorModel = new Proveedor;
-        $this->HostingModel = new Hosting;
+        $this->hostingModel = new Hosting;
         $this->response = [];
     }
 
@@ -26,7 +26,7 @@ class HostingsController extends Controller
      */
     public function index()
     {
-        $dominios = $this->hostingModel->getAll();
+        $hostings = $this->hostingModel->getAll();
         $periodicidades = $this->periodicidadModel->getAll();
         $proveedores = $this->proveedorModel->getAll();
         return view('admin.catalogos.hostings.index', compact('periodicidades', 'hostings', 'proveedores'));

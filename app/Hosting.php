@@ -1,6 +1,8 @@
 <?php
 
 namespace App;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,7 +10,7 @@ class Hosting extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'dominios';
+    protected $table = 'hostings';
 
     protected $fillable = ['periodicidad_id', 'proveedor_id', 'nombre', 'descripcion', 'costo', 'fechaRegistro', 'fechaExpiracion', 'estatus', 'created_by', 'updated_by'];
 

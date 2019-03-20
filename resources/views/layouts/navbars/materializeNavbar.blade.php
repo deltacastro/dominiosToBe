@@ -16,6 +16,9 @@
                     <a href="{{ route('admin.catalogo.dominio.index') }}">Dominios</a>
                 </li>
                 <li>
+                    <a href="{{ route('admin.catalogo.hosting.index') }}">Hostings</a>
+                </li>
+                <li>
                     <a href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
@@ -42,6 +45,9 @@
         </li>
         <li>
             <a href="{{ route('admin.catalogo.dominio.index') }}"><i class="material-icons">assignment_ind</i>Dominios</a>
+        </li>
+        <li>
+            <a href="{{ route('admin.catalogo.hosting.index') }}"><i class="material-icons">assignment_ind</i>Hostings</a>
         </li>
         <li>
             <a href="{{ route('logout') }}"
