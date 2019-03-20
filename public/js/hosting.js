@@ -139,6 +139,7 @@ $(document).ready(function() {
     });
 
     $('#eliminarSubmit').on('click', function() {
+        document.getElementById('cancelSubmit').click();
         let formId = this.dataset.form;
         let form = document.getElementById(formId);
         let url = form.dataset.put;
