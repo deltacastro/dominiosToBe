@@ -16,7 +16,7 @@ class Correo extends Model
 
     protected $dates = ['deleted_at'];
 
-        //RELATIONSHIPS
+    //RELATIONSHIPS
 
     //ACCESORS
 
