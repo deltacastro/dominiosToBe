@@ -60,6 +60,24 @@ class CorreosController extends Controller
      */
     public function show(Correo $correo)
     {
+        if ($correo->id) {
+            $this->response['code'] = 200;
+            $this->response['status'] = 'ok';
+            $this->response['modelData'] = [
+                'id' => $correo->id,
+                'nombre' => $correo->nombre,
+                'correo' => $correo->correo
+            ];
+            $this->response['route']= [
+                'edit' => route('admin.catalogo.correo.update', ['correo' => $correo->id]),
+                'delete' => route('admin.catalogo.correo.destroy', ['correo' => $correo->id])
+            ];
+        }
+        return response()->json($this->response);
+    }
+
+    public function update (Request $request, Correo $correo)
+    {
         $guardado = $this->correoModel->actualizar($request->all(), $correo);
         
         if ($guardado->id) {

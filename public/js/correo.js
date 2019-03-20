@@ -26,6 +26,7 @@ let ajaxProveedor = (form, url, method, type = 'POST') => {
 }
 
 let addRow = (form, modelData, route) => {
+    document.getElementById('cancelSubmit').click();
     let formElements = form.elements;
     let table = document.getElementById('proveedor');
     let bodyTable = table.getElementsByTagName('tbody')[0];
@@ -36,10 +37,9 @@ let addRow = (form, modelData, route) => {
     let opciones = row.insertCell(2);
     nombre.innerHTML = modelData.nombre;
     correo.innerHTML = modelData.correo;
-    expiracion.innerHTML = modelData.expiracion;
     opciones.innerHTML = `
         <a data-form="generalForm" data-nombre="${modelData.nombre}" data-put="${route.edit}" title="Editar" class="editar btn-floating btn-small waves-effect waves-light yellow"><i class="material-icons">edit</i></a>
-        <a data-form="generalForm" data-nombre="${modelData.nombre}" data-delete="${route.delete}" title="Eliminar" class="eliminar btn-floating btn-small waves-effect waves-light red accent-4"><i class="material-icons">delete</i></a>
+        <a data-form="generalForm" data-nombre="${modelData.nombre}" data-delete="${route.destroy}" title="Eliminar" class="eliminar btn-floating btn-small waves-effect waves-light red accent-4"><i class="material-icons">delete</i></a>
     `;
 }
 
@@ -53,13 +53,13 @@ let updateRow = (form, modelData, route) => {
     correo.innerHTML = modelData.correo;
     opciones.innerHTML = `
         <a data-form="generalForm" data-nombre="${modelData.nombre}" data-put="${route.edit}" title="Editar" class="editar btn-floating btn-small waves-effect waves-light yellow"><i class="material-icons">edit</i></a>
-        <a data-form="generalForm" data-nombre="${modelData.nombre}" data-delete="${route.delete}" title="Eliminar" class="eliminar btn-floating btn-small waves-effect waves-light red accent-4"><i class="material-icons">delete</i></a>
+        <a data-form="generalForm" data-nombre="${modelData.nombre}" data-delete="${route.destroy}" title="Eliminar" class="eliminar btn-floating btn-small waves-effect waves-light red accent-4"><i class="material-icons">delete</i></a>
     `;
 }
 
 let editForm = (form, modelData, route) => {
     let nombre = document.getElementById('nombre');
-    let correo = document.getElementById('fechaRegistro');
+    let correo = document.getElementById('correo');
     nombre.value = modelData.nombre;
     correo.value = modelData.correo;
     M.updateTextFields();
@@ -145,5 +145,6 @@ $(document).ready(function() {
         let storeSubmit = document.getElementById('storeSubmit');
         storeSubmit.style.display = 'inline-block';
         storeSubmit.classList.remove('scale-out');
+        M.updateTextFields();
     });
 });

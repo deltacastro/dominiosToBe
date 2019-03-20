@@ -7,8 +7,8 @@
 @section('view-body')
     <br>
     <br>
-    @include('admin.catalogos.periodicidades._form')
-    @include('admin.catalogos.periodicidades._list')
+    @include('admin.catalogos.correos._form')
+    @include('admin.catalogos.correos._list')
     <!-- Modal Structure -->
     <div id="modal1" class="modal">
         <div class="modal-content">

@@ -78,5 +78,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
                 'hostings' => 'hosting'
             ]
         ]);
+        Route::resource('correos', 'Admin\Catalogos\CorreosController', [
+            'names' => [
+                'index' => 'admin.catalogo.correo.index',
+                'store' => 'admin.catalogo.correo.store',
+                'create' => 'admin.catalogo.correo.create',
+                'update' => 'admin.catalogo.correo.update',
+                'edit' => 'admin.catalogo.correo.edit',
+                'destroy' => 'admin.catalogo.correo.destroy',
+                'show' => 'admin.catalogo.correo.show'
+            ],
+            'parameters' => [
+                'correos' => 'correo'
+            ]
+        ]);
     });
 });
