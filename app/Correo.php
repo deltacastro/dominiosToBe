@@ -57,6 +57,6 @@ class Correo extends Model
     }
 
     public function getAllList() {
-        return $this->all()->pluck('nombre', 'id');
+        return $this->all()->pluck('correo');
     }
 }

@@ -34,6 +34,10 @@ class CorreosController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nombre' => 'required|max:50',
+            'correo' => 'required',
+        ]);
         $guardado = $this->correoModel->guardar($request->all());
         
         if ($guardado->id) {
