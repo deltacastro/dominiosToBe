@@ -20,11 +20,7 @@
                 </td>
             </tr>
         @empty
-            <tr>
-                <td class="center" colspan="4">
-                    <span class="large">No hay ni un carajo</span> <br><i class="large material-icons">healing</i>
-                </td>
-            </tr>
+            
         @endforelse
     </tbody>
 </table>

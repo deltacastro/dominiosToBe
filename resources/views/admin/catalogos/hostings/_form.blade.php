@@ -1,5 +1,5 @@
 <div class="row">
-    <form id="generalForm" class="col s12" method="POST" action="{{ route('admin.catalogo.dominio.store') }}" data-post="{{ route('admin.catalogo.dominio.store') }}"  data-put="">
+    <form id="generalForm" class="col s12" method="POST" action="{{ route('admin.catalogo.hosting.store') }}" data-post="{{ route('admin.catalogo.hosting.store') }}"  data-put="">
         {{ csrf_field() }}
         <input name="_method" type="hidden" value="">
         <div class="row">

@@ -113,7 +113,7 @@ $(document).ready(function() {
         let formId = this.dataset.form;
         let form = document.getElementById(formId);
         form.dataset.put = url;
-        let elem = document.querySelector('.modal1');
+        let elem = document.querySelector('#modal1');
         let instance = M.Modal.init(elem, '');
         instance.open();
     });
