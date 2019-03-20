@@ -64,5 +64,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
                 'dominios' => 'dominio'
             ]
         ]);
+        Route::resource('hostings', 'Admin\Catalogos\HostingsController', [
+            'names' => [
+                'index' => 'admin.catalogo.hosting.index',
+                'store' => 'admin.catalogo.hosting.store',
+                'create' => 'admin.catalogo.hosting.create',
+                'update' => 'admin.catalogo.hosting.update',
+                'edit' => 'admin.catalogo.hosting.edit',
+                'destroy' => 'admin.catalogo.hosting.destroy',
+                'show' => 'admin.catalogo.hosting.show'
+            ],
+            'parameters' => [
+                'hostings' => 'hosting'
+            ]
+        ]);
     });
 });
