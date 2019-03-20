@@ -13,6 +13,9 @@
                     <a href="{{ route('admin.catalogo.periodicidad.index') }}">Periodicidades</a>
                 </li>
                 <li>
+                    <a href="{{ route('admin.catalogo.correo.index') }}">Correos</a>
+                </li>
+                <li>
                     <a href="{{ route('admin.catalogo.dominio.index') }}">Dominios</a>
                 </li>
                 <li>
@@ -42,6 +45,9 @@
         </li>
         <li>
             <a href="{{ route('admin.catalogo.periodicidad.index') }}"><i class="material-icons">assignment_ind</i>Periodicidades</a>
+        </li>
+        <li>
+            <a href="{{ route('admin.catalogo.correo.index') }}"><i class="material-icons">assignment_ind</i>Correos</a>
         </li>
         <li>
             <a href="{{ route('admin.catalogo.dominio.index') }}"><i class="material-icons">assignment_ind</i>Dominios</a>
