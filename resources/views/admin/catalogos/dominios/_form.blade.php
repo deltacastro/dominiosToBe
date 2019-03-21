@@ -4,7 +4,7 @@
         <input name="_method" type="hidden" value="">
         <div class="row">
             <div class="input-field col s12 m6 l4">
-                <select id="periodicidad_id" name="periodicidad_id">
+                <select id="periodicidad_id" name="periodicidad_id" class="validate" required>
                     <option value="" disabled selected>Elige Periodicidad</option>
                     @forelse ($periodicidades as $periodicidad)
                         <option value="{{ $periodicidad->id }}">{{ $periodicidad->nombre }}</option>
@@ -12,9 +12,10 @@
                         <option value="" disabled class="test">Vacio....</option>
                     @endforelse
                 </select>
+                <span id="spanPeriodicidad" class="helper-text" data-error="mensaje de error" data-success="Excelente"></span>
             </div>
             <div class="input-field col s12 m6 l4">
-                <select id="proveedor_id" name="proveedor_id">
+                <select id="proveedor_id" name="proveedor_id" required>
                     <option value="" disabled selected>Elige Proveedor</option>
                     @forelse ($proveedores as $proveedor)
                         <option value="{{ $proveedor->id }}">{{ $proveedor->nombre }}</option>
@@ -22,22 +23,27 @@
                         <option value="" disabled>Vacio....</option>
                     @endforelse
                 </select>
+                <span id="spanProveedor" class="helper-text" data-error="mensaje de error" data-success="Excelente"></span>
             </div>
             <div class="input-field col s12 m6 l4">
-                <input id="nombre" name="nombre" type="text" class="validate">
+                <input id="nombre" name="nombre" type="text" class="validate" required>
                 <label for="nombre">Nombre</label>
+                <span id="spanNombre" class="helper-text" data-error="mensaje de error" data-success="Excelente"></span>
             </div>
             <div class="input-field col s12 m6 l4">
-                <input id="descripcion" name="descripcion" type="text" class="validate">
+                <input id="descripcion" name="descripcion" type="text" class="validate" required>
                 <label for="descripcion">Descripcion</label>
+                <span id="spanDescripcion" class="helper-text" data-error="mensaje de error" data-success="Excelente"></span>
             </div>
             <div class="input-field col s12 m6 l4">
-                <input id="costo" name="costo" type="text" class="validate">
+                <input id="costo" name="costo" type="text" class="validate" required>
                 <label for="costo">Costo</label>
+                <span id="spanCosto" class="helper-text" data-error="mensaje de error" data-success="Excelente"></span>
             </div>
             <div class="input-field col s12 m6 l4">
-                <input id="fechaRegistro" type="text" name="fechaRegistro" class="datepicker">
+                <input id="fechaRegistro" type="text" name="fechaRegistro" class="datepicker" required>
                 <label for="fechaRegistro">Fecha Registro</label>
+                <span id="spanFechaRegistro" class="helper-text" data-error="mensaje de error" data-success="Excelente"></span>
             </div>
             <div class="input-field col s12 m6 l4">
                 <a id="storeSubmit" data-form="generalForm" class="guardar btn-floating btn-large waves-effect waves-light red scale-transition"><i class="material-icons">add</i></a>

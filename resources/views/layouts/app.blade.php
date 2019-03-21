@@ -33,7 +33,6 @@
 
             var elems = document.querySelectorAll('select');
             var instances = M.FormSelect.init(elems);
-
             var delay = ( function() {
                 var timer = 0;
                 return function(callback, ms) {
