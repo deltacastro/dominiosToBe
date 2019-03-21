@@ -13,6 +13,16 @@
     <!-- Styles -->
     <link href="{{ asset('css/materialize.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/icon.css') }}" rel="stylesheet">
+    <style>
+        input[type='number'] {
+            -moz-appearance:textfield;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+    </style>
 </head>
 <body>
     @include('layouts.navbars.materializeNavbar')
@@ -27,6 +37,21 @@
     <script src="{{ asset('js/materialize.min.js') }}"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script>
+        let datePickerInit = () => {
+            let datepicker = document.querySelector('.datepicker');
+            let datepickerInstances = M.Datepicker.init(datepicker, {
+                firstDay: true, 
+                format: 'yyyy-mm-dd',
+                i18n: {
+                    months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                    monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
+                    weekdays: ["Domingo","Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+                    weekdaysShort: ["Dom","Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+                    weekdaysAbbrev: ["D","L", "M", "M", "J", "V", "S"]
+                }
+            });
+            datepickerInstances.open();
+        }
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.sidenav');
             var instances = M.Sidenav.init(elems);
@@ -53,22 +78,8 @@
                     determinate.style.width = '0%'
                 }, 500)
             });
-
-            $('.datepicker').on('click', function() {
-                let datepicker = document.querySelector('.datepicker');
-                let datepickerInstances = M.Datepicker.init(datepicker, {
-                    firstDay: true, 
-                    format: 'yyyy-mm-dd',
-                    i18n: {
-                        months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-                        monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
-                        weekdays: ["Domingo","Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
-                        weekdaysShort: ["Dom","Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
-                        weekdaysAbbrev: ["D","L", "M", "M", "J", "V", "S"]
-                    }
-                });
-                datepickerInstances.open();
-            });
+            $('.datepicker').on('click', datePickerInit);
+            $('.datepicker').on('focus', datePickerInit);
         });
     </script>
     @yield('javascript')

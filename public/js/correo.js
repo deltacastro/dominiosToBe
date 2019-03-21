@@ -27,7 +27,28 @@ let ajaxProveedor = (form, url, method, type = 'POST') => {
 
 let removeValidClass = () => {
   document.getElementById('nombre').classList.remove('valid');
+  document.getElementById('nombre').classList.remove('invalid');
   document.getElementById('correo').classList.remove('valid');
+  document.getElementById('correo').classList.remove('invalid');
+}
+
+let validateForm = () => {
+  let nombre = document.getElementById('nombre');
+  let spanNombre = document.getElementById('spanNombre');
+  let correo = document.getElementById('correo');
+  let spanCorreo = document.getElementById('spanCorreo');
+  let pass = true;
+  if (!nombre.checkValidity()) {
+    spanNombre.dataset.error = nombre.validationMessage;
+    nombre.classList.add('invalid');
+    pass = false;
+  }
+  if (!correo.checkValidity()) {
+    spanCorreo.dataset.error = correo.validationMessage;
+    correo.classList.add('invalid');
+    pass = false;
+  }
+  return pass;
 }
 
 let addRow = (form, modelData, route) => {
@@ -80,31 +101,13 @@ let editForm = (form, modelData, route) => {
   let formId = form.id;
   let form2 = document.getElementById(formId);
   form2.dataset.put = url;
+  removeValidClass();
 }
 
 let deleteRow = (form, modelData, route) => {
   let rowId = `nombre${modelData.id}`;
   let row = document.getElementById(rowId);
   row.parentNode.removeChild(row);
-}
-
-let validateForm = () => {
-  let nombre = document.getElementById('nombre');
-  let spanNombre = document.getElementById('spanNombre');
-  let correo = document.getElementById('correo');
-  let spanCorreo = document.getElementById('spanCorreo');
-  let pass = true;
-  if (!nombre.checkValidity()) {
-    spanNombre.dataset.error = nombre.validationMessage;
-    nombre.classList.add('invalid');
-    pass = false;
-  }
-  if (!correo.checkValidity()) {
-    spanCorreo.dataset.error = correo.validationMessage;
-    correo.classList.add('invalid');
-    pass = false;
-  }
-  return pass;
 }
 
 $(document).ready(function () {
@@ -142,13 +145,14 @@ $(document).ready(function () {
   });
 
   $('#editSubmit').on('click', function () {
-    let formId = this.dataset.form;
-    let form = document.getElementById(formId);
-    let url = form.dataset.put;
-    let method = 'PUT';
-    form._method.value = 'PUT';
-    ajaxProveedor(form, url, method);
-
+    if (validateForm()) {
+      let formId = this.dataset.form;
+      let form = document.getElementById(formId);
+      let url = form.dataset.put;
+      let method = 'PUT';
+      form._method.value = 'PUT';
+      ajaxProveedor(form, url, method);
+    }
   });
 
   $('#eliminarSubmit').on('click', function () {
@@ -172,6 +176,6 @@ $(document).ready(function () {
     let storeSubmit = document.getElementById('storeSubmit');
     storeSubmit.style.display = 'inline-block';
     storeSubmit.classList.remove('scale-out');
-    M.updateTextFields();
+    removeValidClass();
   });
 });

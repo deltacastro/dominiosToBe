@@ -238,5 +238,6 @@ $(document).ready(function () {
     let storeSubmit = document.getElementById('storeSubmit');
     storeSubmit.style.display = 'inline-block';
     storeSubmit.classList.remove('scale-out');
+    removeValidClass();
   });
 });

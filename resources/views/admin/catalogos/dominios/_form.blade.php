@@ -36,7 +36,7 @@
                 <span id="spanDescripcion" class="helper-text" data-error="mensaje de error" data-success="Excelente"></span>
             </div>
             <div class="input-field col s12 m6 l4">
-                <input id="costo" name="costo" type="text" class="validate" required>
+                <input id="costo" name="costo" type="number" class="validate" required>
                 <label for="costo">Costo</label>
                 <span id="spanCosto" class="helper-text" data-error="mensaje de error" data-success="Excelente"></span>
             </div>
