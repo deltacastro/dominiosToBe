@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'abelcastro@tobe.mx'),
-        'name' => env('MAIL_FROM_NAME', 'Abel Castro'),
+        'address' => env('MAIL_FROM_ADDRESS', 'notificaciones@tobe.mx'),
+        'name' => env('MAIL_FROM_NAME', 'Notificaciones ToBe'),
     ],
 
     /*

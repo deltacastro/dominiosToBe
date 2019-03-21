@@ -84,13 +84,20 @@ let deleteRow = (form, modelData, route) => {
 
 $(document).ready(function() {
     $('.guardar').on('click', function() {
+        alert('entra');
         let formId = $(this).data('form');
         let form = document.getElementById(formId);
-        let url = form.action;
-        form._method.value = 'POST';
-        let method = 'POST';
-        ajaxProveedor(form, url, method);
+        $(`#${formId}`).submit();
+        // let url = form.action;
+        // form._method.value = 'POST';
+        // let method = 'POST';
+        // ajaxProveedor(form, url, method);
     });
+
+    $(document).on('submit', function(e) {
+        e.preventDefault;
+        return false;
+    })
 
     $('tbody').on('click', '.eliminar', function() {
         let dataId = this.dataset.id;

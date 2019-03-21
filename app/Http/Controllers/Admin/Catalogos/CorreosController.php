@@ -36,7 +36,7 @@ class CorreosController extends Controller
     {
         $this->validate($request, [
             'nombre' => 'required|max:50',
-            'correo' => 'required',
+            'correo' => 'required|email',
         ]);
         $guardado = $this->correoModel->guardar($request->all());
         

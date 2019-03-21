@@ -8,7 +8,7 @@
                 <label for="nombre">Nombre</label>
             </div>
             <div class="input-field col s12 m6 l4">
-                <input id="correo" name="correo" type="text" class="validate" required>
+                <input id="correo" name="correo" type="email" class="validate" required>
                 <label for="correo">Correo</label>
             </div>
             <div class="input-field col s12 m6 l4">
