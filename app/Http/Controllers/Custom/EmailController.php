@@ -32,7 +32,15 @@ class EmailController extends Controller
             'mes' => $this->hostingModel->getMesExpira(),
             'semana' => $this->hostingModel->getSemanaExpira()
         ];
+        
         $email = $this->correoModel->getAllList()->toArray();
-        Mail::to($email)->send(new Reminder($this->expiracion));
+        $countDominioSemana = count($this->expiracion['dominio']['semana']);
+        $countDominioMes = count($this->expiracion['dominio']['mes']);
+        $countHostingSemana = count($this->expiracion['hosting']['semana']);
+        $countHostingMes = count($this->expiracion['hosting']['mes']);
+        
+        if ($countDominioSemana > 0 && $countDominioMes > 0 && $countHostingSemana > 0 && $countHostingMes > 0) {
+            Mail::to($email)->send(new Reminder($this->expiracion));
+        }
     }
 }
