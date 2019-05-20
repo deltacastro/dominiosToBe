@@ -32,7 +32,7 @@ class EmailController extends Controller
         $this->expiracion['hosting'] = [
             'mes' => $this->hostingModel->getMesExpira(),
             'semana' => $this->hostingModel->getSemanaExpira(),
-            'caducados' => $this->dominioModel->getCaducados()
+            'caducados' => $this->hostingModel->getCaducados()
         ];
 
         $email = $this->correoModel->getAllList()->toArray();
