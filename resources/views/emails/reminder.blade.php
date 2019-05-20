@@ -20,6 +20,18 @@
 @endforeach
 @endcomponent
 @endif
+
+# Dominios que ya expiraron.
+@if (isset($expiraciones['dominio']['caducados']) && count($expiraciones['dominio']['caducados']) > 0 )
+@component('mail::table')
+| Dominio       | Proveedor     | Fecha expiración  |
+|:------------- |:-------------|-----------------------:|
+@foreach ($expiraciones['dominio']['caducados'] as $dominioCaducado)
+| {{ $dominioCaducado->nombre }} | {{ $dominioCaducado->proveedor->nombre }}  | {{ $dominioCaducado->fechaExpiracion }}    |
+@endforeach
+@endcomponent
+@endif
+
 @if (isset($expiraciones['hosting']['mes']) && count($expiraciones['hosting']['mes']) > 0 )
 # Hostings que estan por expirar este mes.
 @component('mail::table')
@@ -38,6 +50,17 @@
 |:------------- |:-------------|-----------------------:|
 @foreach ($expiraciones['hosting']['semana'] as $hostingSemana)
 | {{ $hostingSemana->nombre }} | {{ $hostingSemana->proveedor->nombre }}  | {{ $hostingSemana->fechaExpiracion }}    |
+@endforeach
+@endcomponent
+@endif
+
+# Hostings que ya expiraron.
+@if (isset($expiraciones['hosting']['caducados']) && count($expiraciones['hosting']['caducados']) > 0 )
+@component('mail::table')
+| Dominio       | Proveedor     | Fecha expiración  |
+|:------------- |:-------------|-----------------------:|
+@foreach ($expiraciones['hosting']['caducados'] as $hostingCaducado)
+| {{ $hostingCaducado->nombre }} | {{ $hostingCaducado->proveedor->nombre }}  | {{ $hostingCaducado->fechaExpiracion }}    |
 @endforeach
 @endcomponent
 @endif

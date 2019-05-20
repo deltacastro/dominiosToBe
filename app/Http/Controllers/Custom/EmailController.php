@@ -26,19 +26,23 @@ class EmailController extends Controller
     {
         $this->expiracion['dominio'] = [
             'mes' => $this->dominioModel->getMesExpira(),
-            'semana' => $this->dominioModel->getSemanaExpira()
+            'semana' => $this->dominioModel->getSemanaExpira(),
+            'caducados' => $this->dominioModel->getCaducados()
         ];
         $this->expiracion['hosting'] = [
             'mes' => $this->hostingModel->getMesExpira(),
-            'semana' => $this->hostingModel->getSemanaExpira()
+            'semana' => $this->hostingModel->getSemanaExpira(),
+            'caducados' => $this->dominioModel->getCaducados()
         ];
 
         $email = $this->correoModel->getAllList()->toArray();
         $countDominioSemana = count($this->expiracion['dominio']['semana']);
         $countDominioMes = count($this->expiracion['dominio']['mes']);
+        $countDominioCaducados = count($this->expiracion['dominio']['caducados']);
         $countHostingSemana = count($this->expiracion['hosting']['semana']);
         $countHostingMes = count($this->expiracion['hosting']['mes']);
-        if ($countDominioSemana > 0 || $countDominioMes > 0 || $countHostingSemana > 0 || $countHostingMes > 0) {
+        $countHostingCaducados = count($this->expiracion['hosting']['caducados']);
+        if ($countHostingCaducados > 0 || $countDominioCaducados > 0 || $countDominioSemana > 0 || $countDominioMes > 0 || $countHostingSemana > 0 || $countHostingMes > 0) {
             try {
                 Mail::to($email)->send(new Reminder($this->expiracion));
             } catch (\Throwable $th) {
