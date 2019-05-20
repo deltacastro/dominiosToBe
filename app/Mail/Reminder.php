@@ -29,6 +29,10 @@ class Reminder extends Mailable
         // dd($this->expiraciones['dominio']['mes']);
         // dd($this->expiraciones['dominio']);
         // dd($this->expiraciones['dominio']['semana'][0]->nombre);
-        return $this->markdown('emails.reminder')->subject('DOMINIOS POR CADUCAR!');
+        try {
+            return $this->markdown('emails.reminder')->subject('DOMINIOS POR CADUCAR!');
+        } catch (\Throwable $th) {
+            dd($th);
+        }
     }
 }
