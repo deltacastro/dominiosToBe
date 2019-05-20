@@ -128,7 +128,6 @@ class Dominio extends Model
     public function getCaducados()
     {
         $date = date('Y-m-d');
-        $date = strtotime($date);
         $data = $this->with('proveedor')->where('fechaExpiracion', '<' ,$date)->get();
         return $data;
     }
