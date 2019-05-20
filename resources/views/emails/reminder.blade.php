@@ -21,8 +21,8 @@
 @endcomponent
 @endif
 
-# Dominios que ya expiraron.
 @if (isset($expiraciones['dominio']['caducados']) && count($expiraciones['dominio']['caducados']) > 0 )
+# Dominios que ya expiraron.
 @component('mail::table')
 | Dominio       | Proveedor     | Fecha expiración  |
 |:------------- |:-------------|-----------------------:|
@@ -54,8 +54,8 @@
 @endcomponent
 @endif
 
-# Hostings que ya expiraron.
 @if (isset($expiraciones['hosting']['caducados']) && count($expiraciones['hosting']['caducados']) > 0 )
+# Hostings que ya expiraron.
 @component('mail::table')
 | Dominio       | Proveedor     | Fecha expiración  |
 |:------------- |:-------------|-----------------------:|
